@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Medicine Distribution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        main {
+            padding: 30px;
+        }
+
+        .form-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #43a047;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color:  #e8f5e9;
+        }
+    
+        .left-button{
+            margin-left:20px ;
+            color: white;
+            margin-top:15px ;
+            background-color:#ff0000;
+            text-decoration: none;
+            padding: 10px; 
+            height: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Hospital Medicine Distribution System</h1>
+    <p>Track where medicine was delivered, to which hospital, and its location</p>
+   
+</header>
+<a class="left-button" href="chef.html">EXIT</a>
+<main>
+    <h2>Medicine Distribution Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Hospital</th>
+                <th>Location</th>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                <th>Time</th>
+                <th>Distributed By</th>
+            </tr>
+        </thead>
+        <tbody id="distributionTableBody">
+            <!-- Distributed medicine records appear here -->
+        </tbody>
+    </table>
+
+    <div class="form-section">
+        <h2>Distribute Medicine</h2>
+        <form id="hospitalForm">
+
+            <label for="name">Type</label>
+            <input type="text" id="hospitalName" name="name">
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location">
+
+            <label for="medicine">Medicine</label>
+            <input type="text" id="medicine" name="medicine">
+
+            <label for="quantity">Quantity Delivered</label>
+            <input type="number" id="quantity" name="quantity">
+
+            <label for="distributedBy">Distributed By</label>
+            <input type="text" id="distributedBy" name="distributedBy" required>
+
+            <button type="button" onclick="addDistribution()">Submit</button>
+        </form>
+    </div>
+</main>
+
+<script>
+    function addDistribution() {
+        const hospital = document.getElementById("hospitalName")?.value || '';
+        const location = document.getElementById("location")?.value || '';
+        const medicine = document.getElementById("medicine")?.value || '';
+        const quantity = document.getElementById("quantity")?.value || '';
+        const distributedBy = document.getElementById("distributedBy").value;
+        const time = new Date().toLocaleString();
+
+        if (!hospital || !location || !quantity || !distributedBy) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        const tbody = document.getElementById("distributionTableBody");
+        const row = tbody.insertRow();
+
+        row.innerHTML = `
+            <td>${hospital}</td>
+            <td>${location}</td>
+            <td>${medicine}</td>
+            <td>${quantity}</td>
+            <td>${time}</td>
+            <td>${distributedBy}</td>
+        `;
+
+        document.getElementById("hospitalForm").reset();
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chef Pharmacy - System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+        }
+        header {
+            background: #007B5E;
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        header h1, header p {
+            margin: 0;
+            text-align: center;
+        }
+        .logout-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: #004c3f;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .logout-btn i {
+            margin-right: 5px;
+        }
+        .container {
+            padding: 30px;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #007B5E;
+        }
+        .btn {
+            background: #007B5E;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        #newReportIcon {
+            color: red;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <button class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+    <h1>Chef Pharmacy System</h1>
+    <p>Receive, Distribute, and Track Medicine Stock</p>
+</header>
+
+<div class="container">
+    <div class="section">
+        <h2>✔️ Receive Medicines</h2>
+        <p>Enter the medicines received from OpenRMS or other suppliers into the system.</p>
+        <a href="chief2.html" class="btn">Receive Medicines</a>
+    </div>
+
+    <div class="section">
+        <h2>📤 Distribute Medicines</h2>
+        <p>Distribute medicines to doctors or medical centers you collaborate with.</p>
+        <a href="dist.html" class="btn">Distribute Medicines</a>
+    </div>
+
+    <div class="section">
+        <h2>📊 Reports 
+            <span id="newReportIcon" style="display: none;">🔔 New</span>
+        </h2>
+        <p>Check inventory reports: what's remaining, what was distributed, and where it went.</p>
+        <a href="report.html" class="btn" onclick="markReportsAsSeen()">View Reports</a>
+    </div>
+</div>
+
+<script>
+    // Show notification if new report exists
+    if (!localStorage.getItem("reportSeen")) {
+        document.getElementById("newReportIcon").style.display = "inline";
+    }
+
+    function markReportsAsSeen() {
+        localStorage.setItem("reportSeen", "yes");
+        document.getElementById("newReportIcon").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

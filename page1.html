@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account - Chef Pharmacy</title>
+    
+    <!-- Load Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .exit-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #dc3545;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .exit-btn i {
+            margin-right: 5px;
+        }
+
+        .register-box {
+            width: 400px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007B5E;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+       a button[type="submit"] {
+            background: #007B5E;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Exit Button -->
+<button class="exit-btn" onclick="window.location.href='chef.html'">
+    <i class="fas fa-times"></i> Exit
+</button>
+
+<div class="register-box">
+    <h2>Create Account</h2>
+    <form action="Account.php">
+        <input type="FullName" placeholder="FullName" required>
+        <input type="email" placeholder="Email" required>
+        <select>
+            <option value="doctor">Chef Pharmacy</option>
+            <option value="pharmacy">Pharmacy Manager</option>
+        </select>
+        <input type="password" placeholder="Password" required>
+        <input type="confirmpassword" placeholder="Confirm Password" required>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+</body>
+</html>

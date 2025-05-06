@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pharmacy Manager Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0fbff;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pharmacy Store Dashboard</h1>
+
+    <!-- Incoming Medicines Section -->
+    <div class="section">
+        <h2>Incoming Medicines</h2>
+        <form id="incomingForm">
+            <div class="form-group">
+                <input type="text" id="inName" placeholder="Medicine Name" required>
+                <input type="number" id="inQuantity" placeholder="Quantity" required>
+                <input type="date" id="inDate" required>
+                <button type="submit">Add Incoming</button>
+            </div>
+        </form>
+        <table id="incomingTable">
+            <thead>
+                <tr>
+                    <th>Medicine</th>
+                    <th>Quantity</th>
+                    <th>Date Received</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Outgoing Medicines Section -->
+    <div class="section">
+        <h2>Outgoing Medicines</h2>
+        <form id="outgoingForm">
+            <div class="form-group">
+                <input type="text" id="outName" placeholder="Medicine Name" required>
+                <input type="number" id="outQuantity" placeholder="Quantity" required>
+                <input type="date" id="outDate" required>
+                <button type="submit">Add Outgoing</button>
+            </div>
+        </form>
+        <table id="outgoingTable">
+            <thead>
+                <tr>
+                    <th>Medicine</th>
+                    <th>Quantity</th>
+                    <th>Date Sold</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Simple JavaScript to Add Table Rows -->
+    <script>
+        document.getElementById("incomingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let name = document.getElementById("inName").value;
+            let quantity = document.getElementById("inQuantity").value;
+            let date = document.getElementById("inDate").value;
+
+            let row = `<tr><td>${name}</td><td>${quantity}</td><td>${date}</td></tr>`;
+            document.getElementById("incomingTable").querySelector("tbody").innerHTML += row;
+
+            event.target.reset();
+        });
+
+        document.getElementById("outgoingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let name = document.getElementById("outName").value;
+            let quantity = document.getElementById("outQuantity").value;
+            let date = document.getElementById("outDate").value;
+
+            let row = `<tr><td>${name}</td><td>${quantity}</td><td>${date}</td></tr>`;
+            document.getElementById("outgoingTable").querySelector("tbody").innerHTML += row;
+
+            event.target.reset();
+        });
+    </script>
+
+</body>
+</html>
